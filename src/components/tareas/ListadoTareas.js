@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import Tarea from "./Tarea";
+import proyectoContext from "../../context/proyectos/proyectoContext";
 
 const ListadoTareas = () => {
   const tareas = [
@@ -8,9 +9,12 @@ const ListadoTareas = () => {
     { nombre: "Elegir Plataforma de pago", estado: true },
     { nombre: "Elegir Hosting", estado: false },
   ];
+
+  const { proyecto } = useContext(proyectoContext);
+
   return (
     <>
-      <h2>Proyecto: Tienda Virtual</h2>
+      <h2>Proyecto: {proyecto.nombre}</h2>
       <ul className="listado-tareas">
         {tareas.length === 0 ? (
           <li className="tarea">
