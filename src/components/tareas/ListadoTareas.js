@@ -17,7 +17,7 @@ const ListadoTareas = () => {
             <p>No hay tareas</p>
           </li>
         ) : (
-          tareas.map((tarea) => <Tarea tarea={tarea} />)
+          tareas.map((tarea, index) => <Tarea tarea={tarea} key={index} />)
         )}
       </ul>
       <div className="mt-2 text-center">
