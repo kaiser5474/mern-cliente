@@ -3,6 +3,7 @@ import {
   CREAR_PROYECTO,
   OBTENER_PROYECTO,
   PROYECTO_ACTUAL,
+  ELIMINAR_PROYECTO,
 } from "../../types";
 
 export default (state, action) => {
@@ -27,6 +28,14 @@ export default (state, action) => {
       return {
         ...state,
         proyecto: action.payload,
+      };
+    case ELIMINAR_PROYECTO:
+      return {
+        ...state,
+        proyecto: null,
+        proyectos: state.proyectos.filter(
+          (proyecto) => proyecto.id !== action.payload
+        ),
       };
     default:
       return state;

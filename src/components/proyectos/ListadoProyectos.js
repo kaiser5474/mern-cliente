@@ -12,7 +12,8 @@ const ListadoProyectos = () => {
   }, []);
 
   //revisar si proyecto tiene contenido
-  if (proyectos.length === 0) return null;
+  if (proyectos.length === 0)
+    return <p className="text-center">No hay proyectos, comienza creando uno!</p>;
 
   return (
     <ul className="listado-proyectos">

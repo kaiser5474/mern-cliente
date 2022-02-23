@@ -10,7 +10,7 @@ const ListadoTareas = () => {
     { nombre: "Elegir Hosting", estado: false },
   ];
 
-  const { proyecto } = useContext(proyectoContext);
+  const { proyecto, eliminarProyecto } = useContext(proyectoContext);
 
   return (
     <>
@@ -25,7 +25,11 @@ const ListadoTareas = () => {
         )}
       </ul>
       <div className="mt-2 text-center">
-        <button type="button" className="btn btn-eliminar 2">
+        <button
+          type="button"
+          className="btn btn-eliminar 2"
+          onClick={() => eliminarProyecto(proyecto.id)}
+        >
           Eliminar Proyecto &times;
         </button>
       </div>
