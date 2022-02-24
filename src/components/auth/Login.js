@@ -53,6 +53,7 @@ const Login = () => {
           </div>
         </form>
         <Link to={"/nueva-cuenta"} className="enlace-cuenta">Crear Cuenta</Link>
+        <Link to={"/proyectos"} className="enlace-cuenta">Proyectos</Link>
       </div>
     </div>
   );
