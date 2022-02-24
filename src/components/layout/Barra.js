@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Barra = () => {
   return (
@@ -7,7 +8,9 @@ const Barra = () => {
         Hola <span>Jarvis</span>
       </p>
       <nav className="nav-principal">
-        <a href="#">Cerrar Sesión</a>
+        <Link to="/">
+          <a>Cerrar Sesión</a>
+        </Link>
       </nav>
     </header>
   );
