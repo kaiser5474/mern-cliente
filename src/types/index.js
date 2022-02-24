@@ -9,3 +9,6 @@ export const ELIMINAR_PROYECTO = "ELIMINAR_PROYECTO";
 export const OBTENER_TAREA = "OBTENER_TAREA";
 export const CREAR_TAREA = "CREAR_TAREA";
 export const ELIMINAR_TAREA = "ELIMINAR_TAREA";
+export const ESTADO_TAREA = "ESTADO_TAREA";
+export const TAREA_ACTUAL = "TAREA_ACTUAL";
+export const EDITAR_TAREA = "EDITAR_TAREA";

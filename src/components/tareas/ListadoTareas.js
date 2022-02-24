@@ -5,11 +5,7 @@ import tareaContext from "../../context/tareas/tareaContext";
 
 const ListadoTareas = () => {
   const { proyecto, eliminarProyecto } = useContext(proyectoContext);
-  const { tareaXProyecto, obtenerTareas } = useContext(tareaContext);
-
-  // const tareasXPoryecto = tareas.filter(
-  //   (tarea) => tarea.proyectoId === proyecto.id
-  // );
+  const { tareaXProyecto } = useContext(tareaContext);
 
   return (
     <>
@@ -26,10 +22,10 @@ const ListadoTareas = () => {
       <div className="mt-2 text-center">
         <button
           type="button"
-          className="btn btn-eliminar 2"
+          className="btn btn-eliminar"
           onClick={() => eliminarProyecto(proyecto.id)}
         >
-          Eliminar Proyecto &times;
+          &times; Eliminar Proyecto
         </button>
       </div>
     </>

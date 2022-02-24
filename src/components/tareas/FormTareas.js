@@ -1,19 +1,30 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import tareaContext from "../../context/tareas/tareaContext";
+import { paraId } from "../../Helpers";
 
 const FormTareas = ({ proyecto }) => {
   const [error, setError] = useState(false);
+  const [editando, setEditando] = useState(false);
   const { id } = proyecto;
 
   const [tarea, setTarea] = useState({
     nombre: "",
     estado: false,
     proyectoId: id,
+    id: paraId(),
   });
 
   const { nombre } = tarea;
 
-  const { crearTareas, obtenerTareas } = useContext(tareaContext);
+  const { crearTareas, obtenerTareas, tareaActual, editTareas } =
+    useContext(tareaContext);
+
+  useEffect(() => {
+    if (tareaActual) {
+      setTarea(tareaActual);
+      setEditando(true);
+    }
+  }, [tareaActual]);
 
   const onChangeTarea = (e) => {
     e.preventDefault();
@@ -31,9 +42,21 @@ const FormTareas = ({ proyecto }) => {
       }, 2500);
       return;
     }
+    if (editando) {
+      editTareas(tarea);
+      obtenerTareas(id);
+    } else {
+      crearTareas(tarea);
+      obtenerTareas(id);
+    }
+    setTarea({
+      nombre: "",
+      estado: false,
+      proyectoId: id,
+      id: paraId(),
+    });
+    setEditando(false);
     setError(false);
-    crearTareas(tarea);
-    obtenerTareas(id);
   };
 
   return (
@@ -53,7 +76,7 @@ const FormTareas = ({ proyecto }) => {
           <input
             type="submit"
             className="btn btn-primario btn-block"
-            value="Agregar Tarea"
+            value={editando ? "Editar Tarea" : "Agregar Tarea"}
           ></input>
         </div>
       </form>

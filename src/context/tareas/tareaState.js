@@ -1,7 +1,14 @@
 import { useReducer } from "react";
 import TareaContext from "./tareaContext";
 import TareaReducer from "./tareaReducer";
-import { OBTENER_TAREA, CREAR_TAREA, ELIMINAR_TAREA } from "../../types";
+import {
+  OBTENER_TAREA,
+  CREAR_TAREA,
+  ELIMINAR_TAREA,
+  ESTADO_TAREA,
+  TAREA_ACTUAL,
+  EDITAR_TAREA,
+} from "../../types";
 
 const TareaState = (props) => {
   const initialState = {
@@ -17,6 +24,7 @@ const TareaState = (props) => {
       { nombre: "Elegir Hosting", estado: false, proyectoId: 3, id: 4 },
     ],
     tareaXProyecto: null,
+    tareaActual: null,
   };
   //Crear dispath y state
   const [state, dispatch] = useReducer(TareaReducer, initialState);
@@ -43,15 +51,41 @@ const TareaState = (props) => {
       payload: tareaId,
     });
   };
+  //Cambiar el estado de la tarea
+  const estadoTareas = (tarea) => {
+    dispatch({
+      type: ESTADO_TAREA,
+      payload: tarea,
+    });
+  };
 
+  //Cambiar el estado de la tarea
+  const selectTareas = (tarea) => {
+    dispatch({
+      type: TAREA_ACTUAL,
+      payload: tarea,
+    });
+  };
+
+  //Cambiar el estado de la tarea
+  const editTareas = (tarea) => {
+    dispatch({
+      type: EDITAR_TAREA,
+      payload: tarea,
+    });
+  };
   return (
     <TareaContext.Provider
       value={{
         tareas: state.tareas,
         tareaXProyecto: state.tareaXProyecto,
+        tareaActual: state.tareaActual,
         obtenerTareas,
         crearTareas,
         eliminarTareas,
+        estadoTareas,
+        selectTareas,
+        editTareas,
       }}
     >
       {props.children}
