@@ -6,8 +6,10 @@ const Tarea = ({ tarea }) => {
   const { eliminarTareas, obtenerTareas, estadoTareas, selectTareas } =
     useContext(tareaContext);
   const tareaEliminar = () => {
-    eliminarTareas(id);
-    obtenerTareas(proyectoId);
+    if (window.confirm("Desea eliminar la tarea?")) {
+      eliminarTareas(id);
+      obtenerTareas(proyectoId);
+    }
   };
   const cambiarEstadoTareas = () => {
     if (estado) {
@@ -19,7 +21,7 @@ const Tarea = ({ tarea }) => {
   };
   const seleccionarTarea = () => {
     selectTareas(tarea);
-  }
+  };
   return (
     <li className="tarea sombra">
       <p>{tarea.nombre}</p>
