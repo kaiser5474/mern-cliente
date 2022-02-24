@@ -12,13 +12,13 @@ const Proyectos = () => {
       <Sidebar />
       <div className="seccion-principal">
         <Barra />
-        {!proyecto ? (          
-            <div className="contenedor-tareas">
-              <h2>Selecciona un proyecto</h2>
-            </div>          
+        {!proyecto ? (
+          <div className="contenedor-tareas">
+            <h2>Selecciona un proyecto</h2>
+          </div>
         ) : (
           <main>
-            <FormTareas />
+            <FormTareas proyecto={proyecto} />
             <div className="contenedor-tareas">
               <ListadoTareas />
             </div>

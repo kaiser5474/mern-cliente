@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import tareaContext from "../../context/tareas/tareaContext";
 
 const Tarea = ({ tarea }) => {
+  const { id, proyectoId } = tarea;
+  const { eliminarTareas, obtenerTareas } = useContext(tareaContext);
+  const tareaEliminar = () => {
+    eliminarTareas(id);
+    obtenerTareas(proyectoId);
+  };
   return (
     <li className="tarea sombra">
       <p>{tarea.nombre}</p>
@@ -19,7 +26,11 @@ const Tarea = ({ tarea }) => {
         <button type="button" className="btn btn-primario">
           Editar
         </button>
-        <button type="button" className="btn btn-secundario">
+        <button
+          type="button"
+          className="btn btn-secundario"
+          onClick={tareaEliminar}
+        >
           Eliminar
         </button>
       </div>
